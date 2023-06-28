@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { SUCESS_MSG, FAILED_MSG } from "../store/constants";
+import { SUCCESS_MSG, FAILED_MSG } from "./store/constants";
 
 class Result extends React.Component {
   static propTypes = {
@@ -16,7 +16,7 @@ class Result extends React.Component {
   render() {
     const result = this.props.location.state.response.result;
     const isSuccess = result && result.status === "success" ? true : false;
-    const successMsg = SUCESS_MSG;
+    const successMsg = SUCCESS_MSG;
     const failureMsg = FAILED_MSG;
     const planet = result && result.planet_name;
 

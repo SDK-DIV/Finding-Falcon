@@ -36,7 +36,9 @@ const getTimeTaken = (state) => {
   return timetaken;
 };
 
-export default (getInitialDestinations,
-addDestination,
-vehicleSelected,
-getTimeTaken);
+export {
+  getInitialDestinations,
+  addDestination,
+  vehicleSelected,
+  getTimeTaken,
+};

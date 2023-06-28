@@ -96,13 +96,13 @@ class App extends React.Component {
                     Time Taken
                   </Typography>
                   <div>
-                    <Button
+                    <button
                       disabled={!this.isAllSelected()}
                       onClick={this.findFalcon}
                     >
                       Find Falcon
-                    </Button>
-                    <Button onClick={this.onReset}>Reset</Button>
+                    </button>
+                    <button onClick={this.onReset}>Reset</button>
                   </div>
                 </div>
               </div>

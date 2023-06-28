@@ -51,4 +51,4 @@ const getToken = () => async (dispatch) => {
     });
 };
 
-export default (findFalcon, getToken);
+export { findFalcon, getToken };
