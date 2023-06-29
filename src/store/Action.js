@@ -8,6 +8,8 @@ export const getInitialDestinationsAction = createAction(
   "getInitialDestinationsAction"
 );
 
+export const findFalconeAction = createAction("findFalconeAction");
+
 export const addDestinationsAction = createAction("addDestinationsAction");
 
 export const vehicleSelectedAction = createAction("vehicleSelectedAction");

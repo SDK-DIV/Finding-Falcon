@@ -1,7 +1,6 @@
 import "./App.css";
 import React from "react";
-import Typography from "@material-ui/core/Typography";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import Destinations from "./Destinations";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import {
@@ -15,11 +14,11 @@ import {
   getSelectedVehicles,
 } from "./store/vehicles";
 import { getInitialDestinations, getTimeTaken } from "./store/destinations";
-import { findFalcon, getToken } from "./store/findFalcon";
+import { findFalcone, getToken } from "./store/findFalcone";
 import { NUMBER_OF_DESTINATIONS } from "./store/constants";
 
 class App extends React.Component {
-  static PropTypes = {
+  static propTypes = {
     history: PropTypes.object,
   };
 
@@ -52,11 +51,11 @@ class App extends React.Component {
     );
   };
 
-  findFalcon = async () => {
+  findFalcone = async () => {
     await this.props.getToken();
-    if (this.props.state.findFalcon.token) {
+    if (this.props.state.findFalcone.token) {
       let requestBody = {
-        token: this.props.state.findFalcon.token.token,
+        token: this.props.state.findFalcone.token.token,
         planet_names: getSelectedPlanets(this.props.state),
         vehicle_names: getSelectedVehicles(this.props.state),
       };
@@ -79,28 +78,38 @@ class App extends React.Component {
     return (
       <div className="Container">
         <div className="App">
-          <h1>Finding Falcon!</h1>
-          <div className="grid-container">
-            <div className="grid-item">
-              <div className="paper">
-                <Destination></Destination>
-              </div>
+          <h1>Finding Falcone!</h1>
+          {this.props.state.planets.length > 0 &&
+          this.props.state.vehicles.length > 0 ? (
+            <div className="grid-container">
+              {Object.keys(this.props.state.destinations).map((dest) => {
+                <div className="grid-item" key={dest}>
+                  <div className="paper">
+                    <Destinations
+                      index={dest}
+                      planets={getAvailablePlanets}
+                      vehicles={getAvailableVehicles}
+                    ></Destinations>
+                  </div>
+                </div>;
+              })}
             </div>
-          </div>
-          : <CircularProgress />
+          ) : (
+            <div className="CircularProgress"></div>
+          )}
           <div className="GridContainer">
             <div className="grid-item">
               <div className="card">
                 <div className="card-content">
-                  <Typography color="textSecondary" gutterBottom>
-                    Time Taken
-                  </Typography>
+                  <div className="Typography">
+                    <h1>Time Taken</h1>
+                  </div>
                   <div>
                     <button
                       disabled={!this.isAllSelected()}
                       onClick={this.findFalcon}
                     >
-                      Find Falcon
+                      Find Falcone
                     </button>
                     <button onClick={this.onReset}>Reset</button>
                   </div>
@@ -131,8 +140,8 @@ const mapDispatchToProps = (dispatch) => ({
   getToken: () => {
     return dispatch(getToken());
   },
-  findFalcon: (data) => {
-    return dispatch(findFalcon(data));
+  findFalcone: (data) => {
+    return dispatch(findFalcone(data));
   },
 });
 

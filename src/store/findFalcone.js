@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as url from "./constants";
-import { findFalconAction, fetchTokenAction } from "./Action";
+import { findFalconeAction, fetchTokenAction } from "./Action";
 
 import {
   NUMBER_OF_DESTINATIONS,
@@ -9,7 +9,7 @@ import {
   FETCH_TOKEN_FAILED_MSG,
 } from "./constants";
 
-const findFalcon = (requestPayload) => async (dispatch) => {
+const findFalcone = (requestPayload) => async (dispatch) => {
   if (
     requestPayload.planet_names &&
     requestPayload.planet_names.length !== NUMBER_OF_DESTINATIONS &&
@@ -29,18 +29,18 @@ const findFalcon = (requestPayload) => async (dispatch) => {
       url: url.FIND_FALCONE_API,
       method: "post",
       data: requestPayload,
-      onSuccess: findFalconAction.type,
+      onSuccess: findFalconeAction.type,
       onError: FIND_FALCONE_FAILED_MSG,
     },
   });
 };
 
 const getToken = () => async (dispatch) => {
-  axios.default.header.common["Accept"] = "application/json";
+  axios.defaults.headers.common["Accept"] = "application/json";
 
   return await axios
     .post(url.AUTH_TOKEN_URL)
-    .then((Response) => {
+    .then((response) => {
       dispatch(fetchTokenAction(response.data));
     })
     .catch((error) => {
@@ -51,4 +51,4 @@ const getToken = () => async (dispatch) => {
     });
 };
 
-export { findFalcon, getToken };
+export { findFalcone, getToken };

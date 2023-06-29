@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { resetErrorAction } from "../actions";
+import { resetErrorAction } from "../store/Action";
 
 const reducer = createReducer(
   {},

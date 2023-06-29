@@ -1,5 +1,5 @@
 import axios from "axios";
-import { baseUrl } from "./constants";
+import { baseURL } from "./constants";
 import { type } from "@testing-library/user-event/dist/type";
 
 const api =
@@ -11,7 +11,7 @@ const api =
     const { url, method, data, onSuccess, onError } = action.payload;
     try {
       const response = await axios.request({
-        baseUrl,
+        baseURL,
         url,
         method,
         data,

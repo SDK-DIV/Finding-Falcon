@@ -1,14 +1,14 @@
-import { combineReducer } from "redux";
+import { combineReducers } from "redux";
 import planetsReducer from "./planetsReducer";
 import vehiclesReducer from "./vehiclesReducer";
 import destinationsReducer from "./destinationsReducer";
-import findFalconReducer from "./findFalconReducers";
+import findFalconeReducer from "./findFalconeReducers";
 import errorReducer from "./errorReducers";
 
-export default combineReducer({
+export default combineReducers({
   planets: planetsReducer,
   vehicles: vehiclesReducer,
   destinations: destinationsReducer,
-  findFalcon: findFalconReducer,
+  findFalcone: findFalconeReducer,
   error: errorReducer,
 });

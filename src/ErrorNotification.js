@@ -19,14 +19,14 @@ class ErrorNotification extends React.Component {
             <div className="Grid">
               <div className="paper">
                 <h2>{error}</h2>
-                <Button
+                <button
                   variant="conatined"
                   className="button"
                   color="primary"
                   onClick={this.onTryAgainClick()}
                 >
                   Try Again
-                </Button>
+                </button>
               </div>
             </div>
           </div>

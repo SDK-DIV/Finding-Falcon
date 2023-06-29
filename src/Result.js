@@ -26,22 +26,32 @@ class Result extends React.Component {
           <div className="card">
             {!isSuccess ? (
               <div className="CardContent">
-                <Typography>{failureMsg}</Typography>
+                <div className="Typography">
+                  <p>{failureMsg}</p>
+                </div>
               </div>
             ) : (
               <div className="CardContent">
-                <Typography>{successMsg}</Typography>
+                <div className="Typography">
+                  <p>{successMsg}</p>
+                </div>
                 <br />
-                <Typography>Time Taken</Typography>
-                <Typography>
-                  {this.props.history.location.state.timetaken}
-                </Typography>
-                <Typography>Planet Found</Typography>
-                <Typography>{planet}</Typography>
+                <div className="Typography">
+                  <h1>Time Taken</h1>
+                </div>
+                <div className="Typography">
+                  <p>{this.props.history.location.state.timetaken}</p>
+                </div>
+                <div className="Typography">
+                  <h1>Planet Found</h1>
+                </div>
+                <div className="Typography">
+                  <p>{planet}</p>
+                </div>
               </div>
             )}
             <div className="cardAction">
-              <Button onClick={this.onTryAgainClick}>Start Again</Button>
+              <button onClick={this.onTryAgainClick}>Start Again</button>
             </div>
           </div>
         </div>

@@ -32,3 +32,10 @@
  border-style: groove;
  
 }
+.Typography-h1{
+  font-family: 'Untitled Serif';
+  font-size: 100px;
+  line-height: 98px;
+  font-weight: 400;
+  color: brown;
+}

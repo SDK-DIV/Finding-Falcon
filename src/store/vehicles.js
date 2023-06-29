@@ -1,11 +1,13 @@
 import { FETCH_VEHICLES_FAILED_MSG } from "./constants";
 
+import { fetchVehiclesAction } from "./Action";
+
 const fetchVehicales = () => async (dispatch) => {
   return dispatch({
     type: "apiCallBegan",
     payload: {
       url: "VEHICLE_API",
-      onSuccess: fetchVehicleAction.type,
+      onSuccess: fetchVehiclesAction.type,
       onError: FETCH_VEHICLES_FAILED_MSG,
     },
   });

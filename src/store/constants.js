@@ -2,6 +2,9 @@ export const NUMBER_OF_DESTINATIONS = 4;
 export const FIND_FALCONE_FAILED_MSG = "Find Falcone Action Failed";
 export const NOT_SELECTED_MSG = "Not all planets and vehicles selected";
 export const SELECT_DEST_MSG = "Select Destination";
+export const AUTH_TOKEN_URL = "https://findfalcone.geektrust.com/token";
+export const FIND_FALCONE_API = "https://findfalcone.geektrust.com/find";
+export const baseURL = "https://findfalcone.geektrust.com/";
 
 export const SUCCESS_MSG =
   "Success! Congratulations on Finding Falcone. King Shan is mighty pleased.";

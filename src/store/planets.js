@@ -1,5 +1,7 @@
 import { FETCH_PLANETS_FAILED_MSG, PLANET_API } from "./constants";
 
+import { fetchPlanetsAction } from "./Action";
+
 //action
 const fetchPlanets = () => async (dispatch) => {
   return {
