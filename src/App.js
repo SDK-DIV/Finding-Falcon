@@ -76,7 +76,6 @@ function App({ history }) {
       },
     });
   };
-
   return (
     <div className="container">
       <div className="app">

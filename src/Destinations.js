@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { addDestination } from "./store/destinations";
 import { SELECT_DEST_MSG } from "./store/constants";
-import "./AppDesign.css";
 
 function Destination({ planets, vehicles, index }) {
   const dispatch = useDispatch();
@@ -40,12 +39,7 @@ function Destination({ planets, vehicles, index }) {
         <label className={getClassName()} htmlFor="destination">
           {SELECT_DEST_MSG}
         </label>
-        <select
-          id="destination"
-          name="destination"
-          value={selectedValue}
-          onChange={onDestinationChange}
-        >
+        <select value={selectedValue} onChange={onDestinationChange}>
           <option value={selectedValue}>{selectedValue}</option>
           {optionItems}
         </select>
@@ -62,7 +56,7 @@ function Destination({ planets, vehicles, index }) {
 Destination.propTypes = {
   planets: PropTypes.array,
   vehicles: PropTypes.array,
-  index: PropTypes.number,
+  index: PropTypes.string,
 };
 
 export default Destination;

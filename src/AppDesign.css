@@ -8,17 +8,79 @@
   padding: 10px;
   margin: 15px;
 }
-
 .grid-container {
   display: flex;
   flex-wrap: wrap;
-  margin: -10px; /* Adjust spacing as needed */
+  justify-content: space-between;
 }
 
 .grid-item {
+  flex: calc(25% - 10px);
+  margin: 5px;
+  padding: 15px;
+  border: 1px solid #ccc;
   box-sizing: border-box;
-  flex: 1 0 calc(33.33% - 20px); /* Adjust width and spacing as needed */
-  padding: 10px; /* Adjust spacing as needed */
+}
+
+.paper {
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  padding: 16px;
+}
+
+.destination {
+  padding: 5%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin: 20px;
+  min-width: 5%;
+}
+
+.destinationSelect {
+  margin: 20px 0;
+}
+
+.destinationSelect label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.destinationSelect select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.radio-group {
+  margin-top: 10px;
+}
+
+.radio-label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.radio-input {
+  margin-right: 5px;
+}
+
+.unselected {
+  position: relative !important;
+  color: brown !important;
+}
+
+.selected {
+  position: relative !important;
+}
+
+.vehicleList {
+  padding-top: 20px;
+  text-align: left;
 }
 
 /* Media queries for responsiveness */
@@ -34,6 +96,14 @@
   }
 }
 
+
+.grid-container1 {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 16px; /* Adjust spacing as needed */
+}
 .circular-progress {
   width: 50px;
   height: 50px;
@@ -46,20 +116,6 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
-}
-.paper {
-  background-color: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 4px;
-  padding: 16px;
-  /* Add more styling as needed */
-}
-.grid-container1 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 16px; /* Adjust spacing as needed */
 }
 
 .grid-item1 {
@@ -91,17 +147,16 @@
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  /* Add more styling as needed */
+  
 }
 
 .card-content {
-  /* Add content styles here */
+  
 }
 .typography-secondary {
-  color: #6c757d; /* Text secondary color */
-  /* Add typography styles (e.g., font-size, font-weight, etc.) */
+  color: #6c757d;
+  
 }
-
 .gutter-bottom {
   margin-bottom: 8px; /* Adjust spacing as needed */
 }
@@ -160,62 +215,6 @@
   background-color: #1976d2;
 }
 
-
-
-.destination {
-  padding: 5%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin: 20px;
-  min-width: 5%;
-}
-
-.destinationSelect {
-  margin: 20px 0;
-}
-
-.destinationSelect label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
-
-.destinationSelect select {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-.radio-group {
-  margin-top: 10px;
-}
-
-.radio-label {
-  display: block;
-  margin-bottom: 8px;
-  font-size: 16px;
-  cursor: pointer;
-}
-
-.radio-input {
-  margin-right: 5px;
-}
-
-
-.unselected {
-  position: relative !important;
-  color: red !important;
-}
-
-.selected {
-  position: relative !important;
-}
-
-.vehicleList {
-  padding-top: 20px;
-  text-align: left;
-}
-
 .error {
   text-align: center;
   margin-top: 10%;
@@ -243,12 +242,6 @@
   background-color: #1565c0;
 }
 
-
-
 .time {
   color: #3f51b5;
-}
-
-.paper {
-  margin-right: 15px;
 }

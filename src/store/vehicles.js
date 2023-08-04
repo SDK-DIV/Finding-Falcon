@@ -2,16 +2,14 @@ import { FETCH_VEHICLES_FAILED_MSG, VEHICLE_API } from "./constants";
 
 import { fetchVehiclesAction } from "./actions";
 
-const fetchVehicales = () => async (dispatch) => {
-  return dispatch({
-    type: "apiCallBegan",
-    payload: {
-      url: VEHICLE_API,
-      onSuccess: fetchVehiclesAction.type,
-      onError: FETCH_VEHICLES_FAILED_MSG,
-    },
-  });
-};
+const fetchVehicales = () => ({
+  type: "apiCallBegan",
+  payload: {
+    url: VEHICLE_API,
+    onSuccess: fetchVehiclesAction.type,
+    onError: FETCH_VEHICLES_FAILED_MSG,
+  },
+});
 
 const getAvailableVehicles = (state) => {
   let vehiObj = {};
@@ -23,7 +21,7 @@ const getAvailableVehicles = (state) => {
     }
   });
 
-  let availableVehicles = JSON.parse(JSON.stringify(state.vehicles));
+  const availableVehicles = JSON.parse(JSON.stringify(state.vehicles));
   availableVehicles.forEach((vehicle) => {
     if (vehiObj[vehicle.name]) {
       vehicle.total_no -= vehiObj[vehicle.name];
