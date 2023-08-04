@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as url from "./constants";
-import { findFalconeAction, fetchTokenAction } from "./Action";
+import { findFalconeAction, fetchTokenAction } from "./actions";
 
 import {
   NUMBER_OF_DESTINATIONS,

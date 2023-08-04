@@ -2,7 +2,7 @@ import {
   getInitialDestinationsAction,
   addDestinationsAction,
   vehicleSelectedAction,
-} from "./Action";
+} from "./actions";
 import { NUMBER_OF_DESTINATIONS } from "./constants";
 
 //action

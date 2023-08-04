@@ -3,8 +3,7 @@ import {
   getInitialDestinationsAction,
   addDestinationsAction,
   vehicleSelectedAction,
-} from "../store/Action";
-import destinations from "../store/destinations";
+} from "../store/actions";
 
 const reducer = createReducer(
   {},
@@ -29,3 +28,34 @@ const reducer = createReducer(
 );
 
 export default reducer;
+
+// import { createReducer } from "@reduxjs/toolkit";
+// import {
+//   getInitialDestinationsAction,
+//   addDestinationsAction,
+//   vehicleSelectedAction,
+// } from "../store/actions";
+
+// const initialState = {};
+
+// const reducer = createReducer(initialState, (builder) => {
+//   builder
+//     .addCase(getInitialDestinationsAction.type, (state, action) => {
+//       action.payload.forEach((dest) => {
+//         state[dest] = {};
+//       });
+//     })
+//     .addCase(addDestinationsAction.type, (state, action) => {
+//       state[action.payload.destinations] = {
+//         selectedPlanet: action.payload.value,
+//         showVehicle: true,
+//       };
+//     })
+//     .addCase(vehicleSelectedAction.type, (state, action) => {
+//       const { timetaken, selectedVehicle, destination } = action.payload;
+//       state[destination].selectedVehicle = selectedVehicle;
+//       state[destination].timetaken = timetaken;
+//     });
+// });
+
+// export default reducer;

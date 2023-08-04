@@ -1,12 +1,14 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore, getDefaultMiddleware } from "@reduxjs/toolkit";
 import reducer from "../reducers/reducer";
+import apiMiddleware from "./apiMiddleware"; // Assuming you've renamed the middleware file
 
-import { getDefaultMiddleware } from "@reduxjs/toolkit";
-import api from "./middlewareApi";
+export default function configureAppStore() {
+  const customizedMiddleware = getDefaultMiddleware().concat(apiMiddleware);
 
-export default function () {
-  return configureStore({
+  const store = configureStore({
     reducer,
-    middleware: [...getDefaultMiddleware(), api],
+    middleware: customizedMiddleware,
   });
+
+  return store;
 }

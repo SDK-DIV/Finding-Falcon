@@ -1,81 +1,68 @@
 import React from "react";
 import Vehicle from "./Vehicle";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addDestination } from "./store/destinations";
 import { SELECT_DEST_MSG } from "./store/constants";
+import "./AppDesign.css";
 
-class Destination extends React.Component {
-  static propTypes = {
-    planets: PropTypes.array,
-    vehicle: PropTypes.array,
-    index: PropTypes.array,
-  };
-  onDestinationChange = (event) => {
-    this.props.addDestination({
-      destination: this.props.index,
-      value: event.currentTarget.value,
-    });
-  };
-  showVehicle = () => {
-    let destinations = this.props.state.destinations;
-    let curresntDest = destinations[this.props.index];
-    return curresntDest.seleectedPlanet ? true : false;
-  };
+function Destination({ planets, vehicles, index }) {
+  const dispatch = useDispatch();
+  const destinations = useSelector((state) => state.destinations);
+  const selectedValue = destinations[index]?.selectedPlanet || SELECT_DEST_MSG;
 
-  getClassName = () => {
-    let destinations = this.props.state.destinations;
-    let curresntDest = destinations[this.props.index];
-    return curresntDest.seleectedPlanet ? "selected" : "unselected";
-  };
-
-  render() {
-    let planets = this.props.planets;
-    let optionItems = planets.map((planet) => (
-      <option key={planet.name}>{planet.name}</option>
-    ));
-    let selectedValue =
-      this.props.state.destinations[this.props.index].seleectedPlanet ||
-      SELECT_DEST_MSG;
-    return (
-      <div className="destination">
-        <div className="destinationSelect">
-          <label
-            className={this.getClassName()}
-            htmlFor="outlined-age-native-simple"
-          >
-            {SELECT_DEST_MSG}
-          </label>
-          <div
-            value={selectedValue}
-            onChange={this.onDestinationChange}
-            label="Destination"
-          >
-            <option value={selectedValue}>{selectedValue}</option>
-            {optionItems}
-          </div>
-        </div>
-        {this.showVehicle() && (
-          <div name={this.props.index}>
-            <Vehicle
-              vehicles={this.props.vehicles}
-              destinationGroup={this.props.index}
-            ></Vehicle>
-          </div>
-        )}
-      </div>
+  const onDestinationChange = (event) => {
+    dispatch(
+      addDestination({
+        destination: index,
+        value: event.target.value,
+      })
     );
-  }
+  };
+
+  const showVehicle = () => {
+    const currentDest = destinations[index];
+    return currentDest?.selectedPlanet ? true : false;
+  };
+
+  const getClassName = () => {
+    const currentDest = destinations[index];
+    return currentDest?.selectedPlanet ? "selected" : "unselected";
+  };
+
+  const optionItems = planets.map((planet) => (
+    <option key={planet.name}>{planet.name}</option>
+  ));
+
+  return (
+    <div className="destination">
+      <div className="destinationSelect">
+        <label className={getClassName()} htmlFor="destination">
+          {SELECT_DEST_MSG}
+        </label>
+        <select
+          id="destination"
+          name="destination"
+          value={selectedValue}
+          onChange={onDestinationChange}
+        >
+          <option value={selectedValue}>{selectedValue}</option>
+          {optionItems}
+        </select>
+      </div>
+      {showVehicle() && (
+        <div className="radio-group" name={index}>
+          <Vehicle vehicles={vehicles} destinationGroup={index}></Vehicle>
+        </div>
+      )}
+    </div>
+  );
 }
 
-const mapStateToProps = (state) => ({
-  state,
-});
+Destination.propTypes = {
+  planets: PropTypes.array,
+  vehicles: PropTypes.array,
+  index: PropTypes.number,
+};
 
-const mapDispatchToProps = (dispatch) => ({
-  addDestination: (data) => {
-    dispatch(addDestination(data));
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Destination);
+export default Destination;

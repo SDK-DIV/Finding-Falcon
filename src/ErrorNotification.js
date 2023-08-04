@@ -1,50 +1,88 @@
 import React from "react";
 import { resetError } from "./store/error";
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
 
-class ErrorNotification extends React.Component {
-  onTryAgainClick = () => {
-    this.props.history.push({
-      pathname: "/",
-    });
-    this.props.resetError();
+function ErrorNotification() {
+  const dispatch = useDispatch();
+  const history = useNavigate();
+  const location = useLocation();
+
+  const onTryAgainClick = () => {
+    history.push("/");
+    dispatch(resetError());
   };
 
-  render() {
-    const error = this.props.location.state.response.error.error;
-    return (
-      <>
-        {error && (
-          <div className="errorDiv">
-            <div className="Grid">
-              <div className="paper">
-                <h2>{error}</h2>
-                <button
-                  variant="conatined"
-                  className="button"
-                  color="primary"
-                  onClick={this.onTryAgainClick()}
-                >
-                  Try Again
-                </button>
-              </div>
+  const error = location.state?.response?.error?.error;
+
+  return (
+    <div>
+      {error && (
+        <div className="errorDiv">
+          <div className="grid-item">
+            <div className="paper">
+              <h2>{error}</h2>
+              <button
+                className="button button-primary"
+                onClick={onTryAgainClick}
+              >
+                Try Again
+              </button>
             </div>
           </div>
-        )}
-        ;
-      </>
-    );
-  }
+        </div>
+      )}
+    </div>
+  );
 }
 
-const mapStateToProps = (state) => ({
-  state,
-});
+export default ErrorNotification;
 
-const mapDispatchToProps = (dispatch) => ({
-  resetError: () => {
-    dispatch(resetError());
-  },
-});
+// import React from "react";
+// import { resetError } from "./store/error";
+// import { connect } from "react-redux";
 
-export default connect(mapStateToProps, mapDispatchToProps)(ErrorNotification);
+// class ErrorNotification extends React.Component {
+//   onTryAgainClick = () => {
+//     this.props.history.push({
+//       pathname: "/",
+//     });
+//     this.props.resetError();
+//   };
+
+//   render() {
+//     const error = this.props.location.state.response.error.error;
+//     return (
+//       <>
+//         {error && (
+//           <div className="errorDiv">
+//             <div className="grid-item">
+//               <div className="paper">
+//                 <h2>{error}</h2>
+//                 <button
+//                   className="button button-primary"
+//                   onClick={this.onTryAgainClick()}
+//                 >
+//                   Try Again
+//                 </button>
+//               </div>
+//             </div>
+//           </div>
+//         )}
+//         ;
+//       </>
+//     );
+//   }
+// }
+
+// const mapStateToProps = (state) => ({
+//   state,
+// });
+
+// const mapDispatchToProps = (dispatch) => ({
+//   resetError: () => {
+//     dispatch(resetError());
+//   },
+// });
+
+// export default connect(mapStateToProps, mapDispatchToProps)(ErrorNotification);

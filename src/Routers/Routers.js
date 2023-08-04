@@ -10,10 +10,10 @@ export default function Routers() {
     <Router>
       <div>
         <Routes>
-          <Route exact path="/" componet={App} />
-          <Route exact path="/result" componet={Result} />
-          <Route exact path="/error" componet={ErrorNotification} />
-          <Route exact componet={NotFound} />
+          <Route path="/" element={<App />} />
+          <Route path="/result" element={<Result />} />
+          <Route path="/error" element={<ErrorNotification />} />
+          <Route element={<NotFound />} />
         </Routes>
       </div>
     </Router>
