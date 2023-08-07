@@ -66,7 +66,6 @@ function App({ history }) {
       goToResult();
     }
   };
-
   const goToResult = () => {
     history.push({
       pathname: "/result",

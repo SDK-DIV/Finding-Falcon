@@ -1,4 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
+
 import {
   getInitialDestinationsAction,
   addDestinationsAction,
@@ -14,7 +15,7 @@ const reducer = createReducer(
       });
     },
     [addDestinationsAction.type]: (destinations, action) => {
-      destinations[action.payload.destinations] = {
+      destinations[action.payload.destination] = {
         selectedPlanet: action.payload.value,
         showVehicle: true,
       };

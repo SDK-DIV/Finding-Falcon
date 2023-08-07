@@ -11,7 +11,6 @@ const getInitialDestinations = () => (dispatch) => {
   for (var i = 1; i <= NUMBER_OF_DESTINATIONS; i++) {
     destinations.push("destination" + i);
   }
-
   dispatch(getInitialDestinationsAction(destinations));
 };
 
