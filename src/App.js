@@ -17,6 +17,8 @@ import { getInitialDestinations, getTimeTaken } from "./store/destinations";
 import { findFalcone, getToken } from "./store/findFalcone";
 import { NUMBER_OF_DESTINATIONS } from "./store/constants";
 
+console.log(getToken);
+
 function App({ history }) {
   const dispatch = useDispatch();
   const state = useSelector((state) => state);
